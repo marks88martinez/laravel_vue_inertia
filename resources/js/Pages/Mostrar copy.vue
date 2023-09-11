@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="producto in productos.data" :key="producto.id">
+                            <tr v-for="producto in productos" :key="producto.id">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                 <div class="ml-4">
@@ -63,13 +63,13 @@
                             <td class="flex m-2">
                             <inertia-link 
                                 :href="route('productos.edit', producto.id)"
-                                class="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="inertia-link">
+                                class="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="button">
                                 Editar
                             </inertia-link>
                             <inertia-link
                                 method="delete"
                                 :href="route('productos.destroy', producto.id)"
-                                class="flex-shrink-0 bg-pink-500 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-pink-200" type="inertia-link">
+                                class="flex-shrink-0 bg-pink-500 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-pink-200" type="button">
                                 Borrar
                             </inertia-link>
                             </td>
@@ -82,10 +82,6 @@
                 </div>
                 </div>
               <!-- /////////////////////////////////  -->
-                <div class="pagination">
-                    <inertia-link @click="fetchPage(productos.prev_page_url)" :disabled="!productos.prev_page_url">Anterior</inertia-link>
-                    <inertia-link @click="fetchPage(productos.next_page_url)" :disabled="!productos.next_page_url">Siguiente</inertia-link>
-                </div>
             </div>
             
         </div>
@@ -107,14 +103,7 @@ export default {
         AppLayout,
         InertiaLink
        
-    },
-    methods: {
-    fetchPage(url) {
-      if (url) {
-        this.$inertia.visit(url);
-      }
-    },
-  },
+    }
     
 }
 </script>
